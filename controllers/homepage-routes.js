@@ -1,3 +1,42 @@
-//create GET route to get ALL posts from everyone for the home page
+const router = require("express").Router();
+const { User, Comment, Blogpost } = require("../models");
+const withAuth = require("../utils/auth");
 
-//create GET route to get one  posts by id for the home page
+//get all blogposts for homepage
+router.get("/", async (req, res) => {
+  try {
+    const allBlogpostData = await Blogpost.findAll({
+      include: [
+        {
+          model: Comment,
+          attributes: ["id", "text"],
+        },
+        {
+          model: User,
+          attributes: ["id", "username"],
+        },
+      ],
+    });
+
+    const blogPosts = allBlogpostData.map((blogpost) =>
+      blogpost.get({ plain: true })
+    );
+    res.render("homepage", {
+      blogPosts,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//create GET route to get to login page when the user is not logged in and trys to click on a post to read it
+
+router.get("/login", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+  res.render("loginPage");
+});
+module.exports = router;
