@@ -1,0 +1,89 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--google font links-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap"
+      rel="stylesheet"
+    />
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!--Import materialize.css-->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../../public/css/materialize.min.css"
+      media="screen,projection"
+    />
+    <link rel="stylesheet" href="../../public/css/style.css" />
+    <title>Blogspot</title>
+  </head>
+  <body>
+    <!--script to activate materilaize sid bar on small screen-->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() { var elems =
+      document.querySelectorAll('.sidenav'); var instances =
+      M.Sidenav.init(elems, options); });</script>
+
+    <!--nav bar for desktop and tablets-->
+    <div class="nav-container">
+      <nav>
+        <div class="nav-wrapper light-blue darken-4">
+          <a href="#!" class="brand-logo">Blogspot</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i
+              class="material-icons"
+            >menu</i></a>
+          <ul class="right hide-on-med-and-down" id="nav-links">
+            <li><a href="/">Home</a>
+            </li>
+            <!-- Conditionally render login or logout links -->
+            {{#if loggedIn}}
+
+              <li><a href="/dashboard">Dashboard</a></li>
+              <li><a href="mobile.html">Logout</a></li>
+            {{else}}
+              <li><a href="collapsible.html">Login</a></li>
+            {{/if}}
+          </ul>
+        </div>
+      </nav>
+
+      <main class="post-container">
+        <!--render the posts for the home page-->
+        {{{body}}}
+      </main>
+
+    <!--html for side nav bar on mobile sized screen-->
+    <ul class="sidenav" id="mobile-demo">
+      <li><a href="/">Home</a>
+      </li>{{#if loggedIn}}
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="mobile.html">Logout</a></li>
+      {{else}}
+        <li><a href="collapsible.html">Login</a></li>
+      {{/if}}
+    </ul>
+
+    <!-- Render script for logged in users only -->
+    {{#if logged_in}}
+      <script src="../../public/js/logout.js"></script>
+    {{/if}}
+
+    <script
+      type="text/javascript"
+      src="../../public/js/materialize/materialize.min.js"
+    ></script>
+  </body>
+</html>

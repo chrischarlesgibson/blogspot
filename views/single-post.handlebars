@@ -1,0 +1,31 @@
+<article>
+  {{> post-info post}}
+
+    {{#if loggedIn}}
+
+
+  <div class="row">
+    <form class="col s12" id="blogpost-form">
+      <div class="row">
+        <div class="input-field col s12" id="comment-form">
+          <textarea id="titleText" class="materialize-textarea"></textarea>
+          <label for="titleText">Enter comment</label>
+        </div>
+         <a class="waves-effect waves-light btn">comment</a>
+    </form>
+  </div>
+  </article>
+
+
+  {{/if}}
+
+    <br>
+
+    <div class="container">
+        {{> comments post.comments}}
+    </div>
+</article>
+
+{{#if loggedIn}}
+<script src="../public/js/add-comment.js"></script>
+{{/if}}

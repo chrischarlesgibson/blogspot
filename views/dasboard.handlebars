@@ -1,0 +1,36 @@
+<main>
+    <h1>Create a New Post</h1>
+  <div class="row">
+    <form class="col s12" id="blogpost-form">
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="titleText" class="materialize-textarea"></textarea>
+          <label for="titleText">Enter Title</label>
+        </div>
+        <div class="input-field col s12">
+          <textarea id="articleText" class="materialize-textarea"></textarea>
+          <label for="articleText">start writing...</label>
+      </div>
+    </form>
+  </div>
+  <br>
+
+  {{#if blogposts.length}}
+  <section>
+
+    <h1>Your Posts</h1>
+ 
+<ul>
+{{#each posts as |post|}} <li>
+{{> blogpost-details post}}
+<a href="/dashboard/edit/{{blogpost.id}}" class="waves-effect waves-light btn">Edit</a>
+</li>
+<br>
+
+{{/each}}
+
+</ul>
+ </section>
+  </main>
+
+  <script src="../public/js/add-post.js"></script>
