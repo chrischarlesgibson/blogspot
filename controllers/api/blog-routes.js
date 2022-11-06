@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const { Blogpost, User } = require("../../models");
+const { Blogpost, User, Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-//get blogpost by id
-router.get("/:id", async (req, res) => {
+//WORKS//get blogpost by id
+router.get("/:id", withAuth, async (req, res) => {
   try {
     const singleBlogpostData = await Blogpost.findByPk(req.params.id, {
       include: [
@@ -29,17 +29,17 @@ router.get("/:id", async (req, res) => {
       logged_in: req.session.logged_in,
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
-//create PUT route for updating YOUR post
+//WORKS//create PUT route for updating YOUR post
 
 router.put("/:id", withAuth, async (req, res) => {
   try {
     const blogpostData = await Blogpost.update(req.body, {
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
       },
     });
     if (!blogpostData) {
@@ -48,17 +48,17 @@ router.put("/:id", withAuth, async (req, res) => {
     }
     res.status(200).json(blogpostData);
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });
 
-//create DELETE route fpor deleting YOUR post
+//WORKS//create DELETE route fpor deleting YOUR post
 router.delete("/:id", withAuth, async (req, res) => {
   try {
     const blogpostData = await Blogpost.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
       },
     });
     if (!blogpostData) {
@@ -67,10 +67,11 @@ router.delete("/:id", withAuth, async (req, res) => {
     }
     res.status(200).json(blogpostData);
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
-//create POST route for posting a new blog post
+//WORKS//create POST route for posting a new blog post
 router.post("/", withAuth, async (req, res) => {
   try {
     const newBlogpost = await Blogpost.create({
@@ -78,6 +79,7 @@ router.post("/", withAuth, async (req, res) => {
     });
     res.status(200).json(newBlogpost);
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });

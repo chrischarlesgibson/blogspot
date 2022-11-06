@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { User, Comment, Blogpost } = require("../models");
 const withAuth = require("../utils/auth");
 
-//get all blogposts for homepage
+//WORKS//get all blogposts for homepage
 router.get("/", async (req, res) => {
   try {
     const allBlogpostData = await Blogpost.findAll({
@@ -26,6 +26,7 @@ router.get("/", async (req, res) => {
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
