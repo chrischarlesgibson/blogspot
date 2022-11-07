@@ -3,36 +3,36 @@ const { Blogpost, User, Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 //WORKS//get blogpost by id
-router.get("/:id", withAuth, async (req, res) => {
-  try {
-    const singleBlogpostData = await Blogpost.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ["username"],
-        },
-        {
-          model: Comment,
-          attributes: ["text", "user_id", "created_at"],
-          include: {
-            model: User,
-            atrributes: ["username"],
-          },
-        },
-      ],
-    });
+// router.get("/:id", withAuth, async (req, res) => {
+//   try {
+//     const singleBlogpostData = await Blogpost.findByPk(req.params.id, {
+//       include: [
+//         {
+//           model: User,
+//           attributes: ["username"],
+//         },
+//         {
+//           model: Comment,
+//           attributes: ["text", "user_id", "created_at"],
+//           include: {
+//             model: User,
+//             atrributes: ["username"],
+//           },
+//         },
+//       ],
+//     });
 
-    const singleBlogpost = singleBlogpostData.get({ plain: true });
+//     const singleBlogpost = singleBlogpostData.get({ plain: true });
 
-    res.render("single-blogpost", {
-      ...singleBlogpost,
-      logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
+//     res.render("single-blogpost", {
+//       ...singleBlogpost,
+//       logged_in: req.session.logged_in,
+//     });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 //WORKS//create PUT route for updating YOUR post
 
 router.put("/:id", withAuth, async (req, res) => {

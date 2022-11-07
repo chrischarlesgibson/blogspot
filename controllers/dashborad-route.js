@@ -3,7 +3,7 @@ const { User, Comment, Blogpost } = require("../models");
 const withAuth = require("../utils/auth");
 
 //need to test get all blogposts for dasboard
-router.get("/", async (req, res) => {
+router.get("/", withAuth, async (req, res) => {
   try {
     const allBlogpostData = await Blogpost.findAll({
       where: {
@@ -30,7 +30,7 @@ router.get("/", async (req, res) => {
     );
     res.render("dashboard", {
       blogPosts,
-      loggedIn: req.session.loggedIn,
+      loggedIn: true,
     });
   } catch (err) {
     console.log(err);
@@ -39,9 +39,10 @@ router.get("/", async (req, res) => {
 });
 
 //get a single post on the dasboard
-router.get("edit/:id", withAuth, async (req, res) => {
+router.get("/edit/:id", withAuth, async (req, res) => {
   try {
-    const singleBlogpostData = await Blogpost.findByPk(req.params.id, {
+    const singleBlogpostData = await Blogpost.findOne({
+      where: { id: req.params.id },
       include: [
         {
           model: User,

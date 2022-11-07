@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const { User } = require("../../models");
-
+const { User, Blogpost, Comment } = require("../../models");
+const withAuth = require("../../utils/auth");
 //create GET route by post id to get specific posts
 
 //WORKS// CREATE new user signup//
@@ -14,6 +14,8 @@ router.post("/", async (req, res) => {
 
     req.session.save(() => {
       req.session.user_id = newUserData.id;
+      req.session.username = newUserData.username;
+      req.session.email = newUserData.email;
       req.session.loggedIn = true;
 
       res.status(200).json(newUserData);
@@ -49,6 +51,8 @@ router.post("/login", async (req, res) => {
 
     req.session.save(() => {
       req.session.user_id = userData.id;
+      req.session.username = userData.username;
+      req.session.email = newUserData.email;
       req.session.loggedIn = true;
 
       res

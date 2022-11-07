@@ -48,7 +48,7 @@
             {{#if loggedIn}}
 
               <li><a href="/dashboard">Dashboard</a></li>
-              <li><a href="/">Logout</a></li>
+              <li><a href="/" class="logoutBtn">Logout</a></li>
             {{else}}
               <li><a href="/login">Login</a></li>
             {{/if}}
@@ -63,7 +63,7 @@
       <li><a href="/">Home</a>
       </li>{{#if loggedIn}}
         <li><a href="/dashboard">Dashboard</a></li>
-        <li><a href="/">Logout</a></li>
+        <li><a href="/" class="logoutBtn">Logout</a></li>
       {{else}}
         <li><a href="/login">Login</a></li>
       {{/if}}
