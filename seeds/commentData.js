@@ -35,7 +35,7 @@ const commentData = [
     text: "cool blog!",
     comment_date: "September 23, 2021 08:30:00",
     user_id: 3,
-    post_id: 3,
+    post_id: 2,
   },
 ];
 

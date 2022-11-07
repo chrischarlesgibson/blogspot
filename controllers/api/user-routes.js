@@ -39,7 +39,7 @@ router.post("/login", async (req, res) => {
         .json({ message: "Incorrect email or password. Please try again!" });
       return;
     }
-
+    // Verify the posted password with the password store in the database. check password is an instance method that compares inpoutted password with encrypted password in db. returns true or false
     const validPassword = await userData.checkPassword(req.body.password);
 
     if (!validPassword) {

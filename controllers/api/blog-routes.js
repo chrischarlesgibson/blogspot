@@ -35,6 +35,8 @@ const withAuth = require("../../utils/auth");
 // });
 //WORKS//create PUT route for updating YOUR post
 
+//withauth is router level middleware that makes sure the user is logged in and if not redirect to login page
+
 router.put("/:id", withAuth, async (req, res) => {
   try {
     const blogpostData = await Blogpost.update(req.body, {

@@ -46,7 +46,6 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-
 //get for a blogpost by id
 
 router.get("/blogposts/:id", withAuth, async (req, res) => {
@@ -71,10 +70,11 @@ router.get("/blogposts/:id", withAuth, async (req, res) => {
         },
       ],
     });
-
+    //map goes over the allblogspost array at each position and gets just the datavalues for the blog post. so only the datavalues we want to see will show up
     const blogPosts = allBlogpostData.map((blogpost) =>
       blogpost.get({ plain: true })
     );
+    //rendering blogposts array  onto the hamepage.handlebars
     res.render("homepage", {
       blogPosts,
       loggedIn: req.session.loggedIn,

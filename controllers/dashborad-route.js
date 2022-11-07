@@ -5,6 +5,9 @@ const withAuth = require("../utils/auth");
 //need to test get all blogposts for dasboard
 router.get("/", withAuth, async (req, res) => {
   try {
+    console.log(
+      "-----------------------------------------------------------------------------------"
+    );
     const allBlogpostData = await Blogpost.findAll({
       where: {
         user_id: req.session.user_id,

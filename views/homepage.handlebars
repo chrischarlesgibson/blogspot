@@ -1,3 +1,5 @@
-{{#each blogposts as |blogpost|}}
+{{!-- //each iterates through the bloposts array then you give alias blogpost to refer to each single blogpost. you dont need alias either --}}
+{{!-- could also write is like {{#each blogPosts}} and then you wouldnt have to do {{blogpost.title}} , your would just do {{title}} forexample --}}
+{{#each blogPosts as |blogpost|}}
 {{> blogpost-details}}
 {{/each}}
