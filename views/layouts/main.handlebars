@@ -24,18 +24,14 @@
     <link
       type="text/css"
       rel="stylesheet"
-      href="../../public/css/materialize.min.css"
+      href="/css/materialize.min.css"
       media="screen,projection"
     />
-    <link rel="stylesheet" href="../../public/css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Blogspot</title>
   </head>
   <body>
-    <!--script to activate materilaize sid bar on small screen-->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() { var elems =
-      document.querySelectorAll('.sidenav'); var instances =
-      M.Sidenav.init(elems, options); });</script>
+   
 
     <!--nav bar for desktop and tablets-->
     <div class="nav-container">
@@ -52,7 +48,7 @@
             {{#if loggedIn}}
 
               <li><a href="/dashboard">Dashboard</a></li>
-              <li><a class="waves-effect waves-light btn">logout</a></li>
+              <li><a href="/">Logout</a></li>
             {{else}}
               <li><a href="/login">Login</a></li>
             {{/if}}
@@ -60,30 +56,36 @@
         </div>
       </nav>
 
-      <main class="post-container">
-        <!--render the posts for the home page-->
-        {{{body}}}
-      </main>
+   
 
     <!--html for side nav bar on mobile sized screen-->
     <ul class="sidenav" id="mobile-demo">
       <li><a href="/">Home</a>
       </li>{{#if loggedIn}}
         <li><a href="/dashboard">Dashboard</a></li>
-        <li><a href="mobile.html">Logout</a></li>
+        <li><a href="/">Logout</a></li>
       {{else}}
         <li><a href="/login">Login</a></li>
       {{/if}}
     </ul>
 
+   <main class="post-container">
+        <!--render the posts for the home page-->
+        {{{body}}}
+      </main>
     <!-- Render script for logged in users only -->
     {{#if logged_in}}
-      <script src="../../public/js/logout.js"></script>
+      <script src="/js/logout.js"></script>
     {{/if}}
 
     <script
       type="text/javascript"
-      src="../../public/js/materialize/materialize.min.js"
+      src="/js/materialize/materialize.min.js"
     ></script>
+     <!--script to activate materilaize sid bar on small screen-->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() { var elems =
+      document.querySelectorAll('.sidenav'); var instances =
+      M.Sidenav.init(elems, {}); });</script>
   </body>
 </html>
