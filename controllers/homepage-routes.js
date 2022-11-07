@@ -45,7 +45,7 @@ router.get("/login", (req, res) => {
   }
   res.render("login");
 });
-module.exports = router;
+
 
 //get for a blogpost by id
 
@@ -84,3 +84,4 @@ router.get("/blogposts/:id", withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+module.exports = router;

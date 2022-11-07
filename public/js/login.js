@@ -1,13 +1,11 @@
 const loginFormHandler = async (event) => {
   event.preventDefault();
-  console.log("clicked");
+  // console.log("clicked");
   // Collect values from the login form
   const email = document.querySelector("#email-login").value.trim();
   const password = document.querySelector("#password-login").value.trim();
 
   if (email && password) {
-    console.log(email);
-    console.log(password);
     // Send a POST request to the API endpoint
     const response = await fetch("/api/users/login", {
       method: "POST",
@@ -17,17 +15,18 @@ const loginFormHandler = async (event) => {
 
     if (response.ok) {
       // If successful, redirect the browser to the homepage page
-      // document.location.replace("/");
-      console.log("successfully logged in");
+      document.location.replace("/");
+      // console.log("successfully logged in");
     } else {
       alert("Login failed.");
+      console.log(await response.json());
     }
   }
 };
 
 const signupFormHandler = async (event) => {
   event.preventDefault();
-  console.log("clicked");
+  // console.log("clicked");
 
   const username = document.querySelector("#username-signup").value.trim();
   const email = document.querySelector("#email-signup").value.trim();
