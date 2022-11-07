@@ -6,6 +6,7 @@ const withAuth = require("../../utils/auth");
 //WORKS// CREATE new user signup//
 router.post("/", async (req, res) => {
   try {
+    console.log(username);
     const newUserData = await User.create({
       username: req.body.username,
       email: req.body.email,
@@ -52,7 +53,7 @@ router.post("/login", async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.username = userData.username;
-      req.session.email = newUserData.email;
+      req.session.email = userData.email;
       req.session.loggedIn = true;
 
       res
