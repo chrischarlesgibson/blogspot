@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { User, Comment, Blogpost } = require("../models");
 const withAuth = require("../utils/auth");
 
-//need to test get all blogposts for dasboard
+//need to test get all blogposts for dasboard if user loggin in
 router.get("/", withAuth, async (req, res) => {
   try {
     console.log(
@@ -41,7 +41,7 @@ router.get("/", withAuth, async (req, res) => {
   }
 });
 
-//get a single post on the dasboard
+//get a single post on the dasboard to edit
 router.get("/edit/:id", withAuth, async (req, res) => {
   try {
     const singleBlogpostData = await Blogpost.findOne({
@@ -64,7 +64,7 @@ router.get("/edit/:id", withAuth, async (req, res) => {
 
     const singleBlogpost = singleBlogpostData.get({ plain: true });
 
-    res.render("single-blogpost", {
+    res.render("post-edit", {
       ...singleBlogpost,
       logged_in: req.session.logged_in,
     });
