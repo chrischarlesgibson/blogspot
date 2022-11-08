@@ -74,7 +74,7 @@ router.get("/blogposts/:id", withAuth, async (req, res) => {
     console.log(allBlogpostData);
     const blogPosts = allBlogpostData.get({ plain: true });
     //rendering single post when you click it on homepage
-    res.render("post-edit", {
+    res.render("single-post-view", {
       blogPosts,
       loggedIn: req.session.loggedIn,
     });
