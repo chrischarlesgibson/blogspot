@@ -1,5 +1,6 @@
 async function addBlogpostHandler(event) {
   event.preventDefault();
+  console.log("blogpost handler clicked");
   const title = document.querySelector(".details-card-title").value;
   const article = document.querySelector(".card-article").value;
 
@@ -20,12 +21,12 @@ async function addBlogpostHandler(event) {
   });
 
   if (response.ok) {
-    document.location.replace("/");
+    document.location.replace("/dashboard");
   } else {
     alert(response.statusText);
   }
 }
 
 document
-  .querySelector("#blogpost-form")
-  .addEventListener("submit", addBlogpostHandler);
+  .querySelector("#createPostBtn")
+  .addEventListener("click", addBlogpostHandler);
