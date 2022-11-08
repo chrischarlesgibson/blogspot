@@ -72,11 +72,9 @@ router.get("/blogposts/:id", withAuth, async (req, res) => {
     });
     //map goes over the allblogspost array at each position and gets just the datavalues for the blog post. so only the datavalues we want to see will show up
     console.log(allBlogpostData);
-    const blogPosts = allBlogpostData.map((blogpost) =>
-      blogpost.get({ plain: true })
-    );
+    const blogPosts = allBlogpostData.get({ plain: true });
     //rendering single post when you click it on homepage
-    res.render("single-post-view", {
+    res.render("post-edit", {
       blogPosts,
       loggedIn: req.session.loggedIn,
     });
