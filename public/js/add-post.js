@@ -1,8 +1,8 @@
 async function addBlogpostHandler(event) {
   event.preventDefault();
   console.log("blogpost handler clicked");
-  const title = document.querySelector(".details-card-title").value;
-  const article = document.querySelector(".card-article").value;
+  const title = document.querySelector("#titleText").value;
+  const article = document.querySelector("#articleText").value;
 
   const post_id = window.location.toString().split("/")[
     window.location.toString().split("/").length - 1
@@ -14,6 +14,7 @@ async function addBlogpostHandler(event) {
       title,
       article,
       post_id,
+      user_id,
     }),
     headers: {
       "Content-Type": "application/json",
