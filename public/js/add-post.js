@@ -14,7 +14,6 @@ async function addBlogpostHandler(event) {
       title,
       article,
       post_id,
-      user_id,
     }),
     headers: {
       "Content-Type": "application/json",

@@ -4,12 +4,18 @@
     <form class="col s12" id="blogpost-form">
       <div class="row">
         <div class="input-field col s12">
-          <textarea id="titleText" class="materialize-textarea"></textarea>
+          <textarea id="titleText" class="materialize-textarea" value="{{blogPosts.title}}"></textarea>
           <label for="titleText">Enter Title</label>
         </div>
         <div class="input-field col s12">
-          <textarea id="articleText" class="materialize-textarea"></textarea>
+          <textarea id="articleText" class="materialize-textarea" value="{{blogPosts.article}}"></textarea>
           <label for="articleText">start writing...</label>
       </div>
+      {{!-- href="/dashboard/edit/{{id}}" --}}
+      <a  id="editBtn"class="waves-effect waves-light btn">Edit</a>
+<a  class="waves-effect waves-light btn" id="deleteBtn">Delete</a>
     </form>
   </div>
+
+  <script src="/js/edit-post.js"></script>
+<script src="/js/delete-post.js"></script>

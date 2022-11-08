@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { User, Comment, Blogpost } = require("../models");
 const withAuth = require("../utils/auth");
 
-//WORKS//get all blogposts for homepage
+//WORKS//get all blogposts for homepage and render on homepage
 router.get("/", async (req, res) => {
   try {
     const allBlogpostData = await Blogpost.findAll({
@@ -71,11 +71,12 @@ router.get("/blogposts/:id", withAuth, async (req, res) => {
       ],
     });
     //map goes over the allblogspost array at each position and gets just the datavalues for the blog post. so only the datavalues we want to see will show up
+    console.log(allBlogpostData);
     const blogPosts = allBlogpostData.map((blogpost) =>
       blogpost.get({ plain: true })
     );
-    //rendering blogposts array  onto the hamepage.handlebars
-    res.render("homepage", {
+    //rendering single post when you click it on homepage
+    res.render("single-post-view", {
       blogPosts,
       loggedIn: req.session.loggedIn,
     });

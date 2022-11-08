@@ -5,7 +5,7 @@ const withAuth = require("../../utils/auth");
 router.post("/", withAuth, async (req, res) => {
   try {
     const newComment = await Comment.create({
-      text: req.body.comment_text,
+      text: req.body.text,
       user_id: req.body.user_id,
       post_id: req.body.post_id,
     });
@@ -19,9 +19,12 @@ router.post("/", withAuth, async (req, res) => {
 //WORKS//get all comments
 router.get("/", withAuth, async (req, res) => {
   try {
-    const allCommentsData = await Comment.findAll({
-      include: [{ model: User }, { model: Blogpost }],
-    });
+    const allCommentsData = await Comment
+      .findAll
+      // {
+      //   include: [{ model: User }, { model: Blogpost }],
+      // }
+      ();
     res.status(200).json(allCommentsData);
   } catch (err) {
     console.log(err);

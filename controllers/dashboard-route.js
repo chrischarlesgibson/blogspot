@@ -31,6 +31,7 @@ router.get("/", withAuth, async (req, res) => {
     const blogPosts = allBlogpostData.map((blogpost) =>
       blogpost.get({ plain: true })
     );
+    console.log(blogPosts, "test");
     res.render("dashboard", {
       blogPosts,
       loggedIn: true,
@@ -65,7 +66,7 @@ router.get("/edit/:id", withAuth, async (req, res) => {
     const singleBlogpost = singleBlogpostData.get({ plain: true });
 
     res.render("post-edit", {
-      ...singleBlogpost,
+      singleBlogpost,
       logged_in: req.session.logged_in,
     });
   } catch (err) {

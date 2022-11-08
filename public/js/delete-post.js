@@ -12,12 +12,12 @@ async function deleteFormHandler(event) {
     },
   });
   if (response.ok) {
-    document.location.replace("/");
+    document.location.replace("/dashboard");
   } else {
     alert("delete failed");
   }
 }
 
 document
-  .querySelector(".delete-article-form")
-  .addEventListener("submit", deleteFormHandler);
+  .querySelector("#deleteBtn")
+  .addEventListener("click", deleteFormHandler);

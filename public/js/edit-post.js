@@ -1,7 +1,7 @@
 async function editFormHandler(event) {
   event.preventDefault();
-  const title = document.querySelector("#title").value;
-  const article = document.querySelector("#article").value;
+  const title = document.querySelector("#titleText").value;
+  const article = document.querySelector("#articleText").value;
 
   const id = window.location.toString().split("/")[
     window.location.toString().split("/").length - 1
@@ -18,12 +18,10 @@ async function editFormHandler(event) {
     },
   });
   if (response.ok) {
-    document.location.replace(`/api/article/${id}`);
+    document.location.replace(`/dashboard`);
   } else {
     alert("edit failed");
   }
 }
 
-document
-  .querySelector(".edit-article-form")
-  .addEventListener("submit", editFormHandler);
+document.querySelector("#editBtn").addEventListener("click", editFormHandler);
