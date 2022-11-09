@@ -1,6 +1,10 @@
 async function addCommentHandler(event) {
   event.preventDefault();
+  console.log(
+    "--------------------------------------------------------------------------------------------------------------------------------"
+  );
   const text = document.querySelector("#titleText").value;
+  console.log(text);
   // const user_id = document.querySelector("#userid").innerHTML;
 
   const post_id = window.location.toString().split("/")[
