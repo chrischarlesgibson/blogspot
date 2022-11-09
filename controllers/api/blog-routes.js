@@ -64,16 +64,16 @@ router.put("/:id", withAuth, async (req, res) => {
 //WORKS//create DELETE route fpor deleting YOUR post
 router.delete("/:id", withAuth, async (req, res) => {
   try {
-    const blogpostData = await Blogpost.destroy({
+    const deleteBlogpostData = await Blogpost.destroy({
       where: {
         id: req.params.id,
       },
     });
-    if (!blogpostData) {
+    if (!deleteBlogpostData) {
       res.status(404).json({ message: "No blog post found with this id!" });
       return;
     }
-    res.status(200).json(blogpostData);
+    res.status(200).json(deleteBlogpostData);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -86,6 +86,7 @@ router.post("/", withAuth, async (req, res) => {
       title: req.body.title,
       article: req.body.article,
       user_id: req.session.user_id,
+      date_created: req.body.date_created,
     });
     res.status(200).json(newBlogpost);
   } catch (err) {

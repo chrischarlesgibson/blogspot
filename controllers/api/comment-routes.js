@@ -5,9 +5,9 @@ const withAuth = require("../../utils/auth");
 router.post("/", withAuth, async (req, res) => {
   try {
     const newComment = await Comment.create({
-      text: req.body.text,
-      user_id: req.body.user_id,
-      post_id: req.body.post_id,
+      ...req.body,
+      include: { model: Blogpost },
+      include: { model: User, where: { id: req.session.user_id } },
     });
     res.status(200).json(newComment);
   } catch (err) {
@@ -19,13 +19,10 @@ router.post("/", withAuth, async (req, res) => {
 //WORKS//get all comments
 router.get("/", withAuth, async (req, res) => {
   try {
-    const allCommentsData = await Comment
-      .findAll
-      // {
-      //   include: [{ model: User }, { model: Blogpost }],
-      // }
-      ();
-    res.status(200).json(allCommentsData);
+    const commentsData = await Comment.findAll({
+      include: [{ model: User }, { model: Blogpost }],
+    });
+    res.status(200).json(commentsData);
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
@@ -52,16 +49,16 @@ router.get("/", withAuth, async (req, res) => {
 //WORKS//create DELETE route for deleting YOUR comments only
 router.delete("/:id", withAuth, async (req, res) => {
   try {
-    const commentData = await Comment.destroy({
+    const DeleteCommentData = await Comment.destroy({
       where: {
         id: req.params.id,
       },
     });
-    if (!commentData) {
+    if (!DeleteCommentData) {
       res.status(404).json({ message: "No comment found with this id!" });
       return;
     }
-    res.status(200).json(commentData);
+    res.status(200).json(DeleteCommentData);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

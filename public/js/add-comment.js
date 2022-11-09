@@ -1,6 +1,7 @@
 async function addCommentHandler(event) {
   event.preventDefault();
-  const commentText = document.querySelector("#titleText").value;
+  const text = document.querySelector("#titleText").value;
+  // const user_id = document.querySelector("#userid").innerHTML;
 
   const post_id = window.location.toString().split("/")[
     window.location.toString().split("/").length - 1
@@ -11,7 +12,7 @@ async function addCommentHandler(event) {
     body: JSON.stringify({
       text,
       post_id,
-      user_id,
+      // user_id,
     }),
     headers: {
       "Content-Type": "application/json",
@@ -26,5 +27,5 @@ async function addCommentHandler(event) {
 }
 
 document
-  .querySelector(".edit-article-form")
-  .addEventListener("submit", addCommentHandler);
+  .querySelector("#commentBtn")
+  .addEventListener("click", addCommentHandler);

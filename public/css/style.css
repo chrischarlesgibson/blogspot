@@ -5,3 +5,7 @@
 .sidenav {
   background-color: #ebeef9;
 }
+
+#card-homepage-link {
+  display: block;
+}
