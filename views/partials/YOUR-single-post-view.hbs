@@ -1,0 +1,69 @@
+<article>
+  <div class="row">
+    <div class="col s12 m5">
+      {{!-- <a  id ="card-homepage-link"href="/blogposts/{{blogPosts.id}}"> --}}
+      <div class="card-panel teal">
+        <h4 class="details-card-title white-text">{{blogPosts.title}}</h4>
+        <span class="card-article white-text">{{blogPosts.article}}</span>
+        <h5 class="card-author white-text">Authored by:{{user.username}}
+          on
+          {{date_created}}
+        </h5>
+        <a
+          id="card-homepage-link"
+          href="/dashboard/edit/{{id}}"
+          class="waves-effect waves-light btn"
+        >Edit</a>
+        {{! </a> }}
+
+      </div>
+    </div>
+  </div>
+</article>
+
+{{!-- 
+ {{#each blogPosts.comments as |comment|}}
+  <div class="row">
+    <div class="col s12 m5">
+      <div class="card-panel teal">
+        <h5 class="card-comment-text white-text">{{comment.text}}</h5>
+        <p class="card-author ">{{user.username}} commented on {{comment.created_at}}
+        </p>
+      </div>
+    </div>
+  </div>
+{{/each}} --}}
+{{!-- </div>
+</div>
+
+
+
+
+    {{#if loggedIn}}
+
+
+  <div class="row">
+    <form class="col s12" id="blogpost-form">
+      <div class="row">
+        <div class="input-field col s12" id="comment-form">
+          <textarea id="titleText" class="materialize-textarea"></textarea>
+          <label for="titleText">Enter comment</label>
+        </div>
+         <a  id="commentBtn"class="waves-effect waves-light btn">comment</a>
+    </form>
+  </div>
+  </article>
+
+
+  {{/if}}
+
+    
+
+
+    </div>
+</article> --}}
+
+{{#if loggedIn}}
+  <script src="js/edit-post.js"></script>
+  <script src="js/delete-post.js"></script>
+{{/if}}

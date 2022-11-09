@@ -45,9 +45,10 @@
             <li><a href="/">Home</a>
             </li>
             <!-- Conditionally render login or logout links -->
-            {{#if loggedIn}}
+           
 
               <li><a href="/dashboard">Dashboard</a></li>
+               {{#if loggedIn}}
               <li><a href="/" class="logoutBtn">Logout</a></li>
             {{else}}
               <li><a href="/login">Login</a></li>
@@ -61,8 +62,9 @@
     <!--html for side nav bar on mobile sized screen-->
     <ul class="sidenav" id="mobile-demo">
       <li><a href="/">Home</a>
-      </li>{{#if loggedIn}}
+      
         <li><a href="/dashboard">Dashboard</a></li>
+        </li>{{#if loggedIn}}
         <li><a href="/" class="logoutBtn">Logout</a></li>
       {{else}}
         <li><a href="/login">Login</a></li>
