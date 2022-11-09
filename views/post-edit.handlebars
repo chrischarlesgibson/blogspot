@@ -4,11 +4,11 @@
     <form class="col s12" id="blogpost-form">
       <div class="row">
         <div class="input-field col s12">
-          <textarea id="titleText" class="materialize-textarea" value="{{blogPosts.title}}"></textarea>
+          <textarea id="titleText" class="materialize-textarea" >{{singleBlogpost.title}}</textarea>
           <label for="titleText">Enter Title</label>
         </div>
         <div class="input-field col s12">
-          <textarea id="articleText" class="materialize-textarea" value="{{blogPosts.article}}"></textarea>
+          <textarea id="articleText" class="materialize-textarea">{{singleBlogpost.article}}</textarea>
           <label for="articleText">start writing...</label>
       </div>
       {{!-- href="/dashboard/edit/{{id}}" --}}

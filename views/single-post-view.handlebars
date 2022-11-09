@@ -3,11 +3,11 @@
   <div class="col s12 m5">
     <a  id ="card-homepage-link"href="/blogposts/{{blogPosts.id}}">
     <div class="card-panel teal">
-      <h4 class="details-card-title white-text">{{blogPosts.title}}</h4>
-       <span class="card-article white-text">{{blogPosts.article}}</span>
-      <h5 class="card-author white-text">Authored by:{{user.username}} on 
-        {{date_created}}
-        </h5>
+      <h1 class="details-card-title white-text">{{blogPosts.title}}</h1>
+       <p class="card-article white-text">{{blogPosts.article}}</p>
+      <p class="card-author white-text">Authored by:{{blogPosts.user.username}} on 
+        {{format_date blogPosts.created_at}}
+        </p>
      
       </a>
 
@@ -19,7 +19,7 @@
     <div class="col s12 m5">
       <div class="card-panel teal">
         <h5 class="card-comment-text white-text">{{comment.text}}</h5>
-        <p class="card-author ">{{user.username}} commented on {{comment.created_at}}
+        <p class="card-author ">{{comment.username}} commented on {{format_date comment.created_at}}
         </p>
       </div>
     </div>

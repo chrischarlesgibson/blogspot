@@ -20,7 +20,7 @@
   <section>
 
     <h1>Your Posts</h1>
- 
+
 <ul>
 {{#each blogPosts}} <li>
 {{!-- {{> blogpost-details}} --}}
@@ -32,7 +32,7 @@
       <h4 class="details-card-title white-text">{{title}}</h4>
       <span class="card-article white-text">{{article}}</span>
       <p class="card-author white-text">Authored by:{{user.username}} on 
-        {{date_created}}
+        {{format_date createdAt}}
         </p>
     
       </a>
@@ -52,6 +52,8 @@
 {{/each}}
 
 </ul>
+ {{else}}
+ <h1>You have no Posts!</h1>
  </section>
   {{/if}}
   </main>
